@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './LayoutDefault.css';
+import logo from '../../img/logo.png';
 import {
   DesktopOutlined,
   FileOutlined,
@@ -8,6 +9,7 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import ProcessList from '../ProcessList/ProcessList';
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
@@ -40,7 +42,9 @@ const LayoutDefault = () => {
       }}
     >
       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-        <div className="demo-logo-vertical" />
+        <div className="demo-logo-vertical">
+         <img src={logo} alt="logo" style={{width: '170px'}} />
+        </div>
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
       </Sider>
       <Layout>
@@ -70,7 +74,7 @@ const LayoutDefault = () => {
               background: colorBgContainer,
             }}
           >
-            Bill is a cat.
+            <ProcessList />
           </div>
         </Content>
         <Footer
