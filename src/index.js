@@ -4,13 +4,21 @@ import App from './App';
 import { ConfigProvider } from 'antd';
 import ptBR from 'antd/lib/locale/pt_BR';
 import 'antd/dist/reset.css';
+import {
+  RouterProvider,
+} from 'react-router-dom';
+/* import './index.css'; */
+import { router } from './routes';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ConfigProvider locale={ptBR}>
-      <App />
-    </ConfigProvider>
+    <RouterProvider router={router}>
+      <ConfigProvider locale={ptBR}>
+        <App />
+      </ConfigProvider>
+    </RouterProvider>
 
   </React.StrictMode>
 );
