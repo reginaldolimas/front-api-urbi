@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { obterListaDeProcessos } from '../../services/apiService';
-import { Button, Checkbox, Form, Input, Row, Col, Typography } from 'antd';
+import { Button, Checkbox, Form, Input, Row, Col, Typography, Divider, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
+import { FacebookFilled, GoogleOutlined, TwitterOutlined } from '@ant-design/icons';
 
 export function Login() {
     const [token, setToken] = useState('Token');
@@ -37,18 +38,23 @@ export function Login() {
         console.log('Failed:', errorInfo);
     };
 
+    const handleLogin = () => {
+        message.success('Login Success!!')
+    }
+
     return (
         <div className='loginContainer'>
-        <Row justify="center" align="middle" style={{ minHeight: '100vh' }}>
+        <Row justify="center" align="middle" style={{ minHeight: '100vh', minWidth: '1000px' }}>
             <Col span={6}>
                 <Form
+                    align='left'
                     className='loginForm'
                     name="basic"
                     labelCol={{
                         span: 8,
                     }}
                     wrapperCol={{
-                        span: 16,
+                        span: 18,
                     }}
                     style={{
                         maxWidth: 600,
@@ -58,9 +64,9 @@ export function Login() {
                     }}
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
-                    autoComplete="off"
+                    autoComplete="on"
                 >
-                <Typography.Title>Login</Typography.Title>
+                <Typography.Title align='center'>Login</Typography.Title>
                     <Form.Item
                         label="Usuário"
                         name="username"
@@ -97,18 +103,18 @@ export function Login() {
                             span: 16,
                         }}
                     >
-                        <Checkbox>Remember me</Checkbox>
+                        <Checkbox>Lembra senha</Checkbox>
                     </Form.Item>
 
-                    <Form.Item
-                        wrapperCol={{
-                            offset: 8,
-                            span: 16,
-                        }}
+                    <Form.Item 
+                    wrapperCol={{
+                        offset: 0,
+                        span: 24,
+                    }}
                     >
                       
-                        <Button type="primary" htmlType="submit">
-                            Submit
+                        <Button type="primary" htmlType="submit" block>
+                            Login
                         </Button>
                         {erroMensage && (
                             <>
@@ -118,6 +124,12 @@ export function Login() {
                             </>
                         )}
                     </Form.Item>
+                    <Divider style={{border: 'black'}}>Ou logue com:</Divider>
+                    <div className='socialLogin'>
+                    <GoogleOutlined className='socialIcon' onClick={handleLogin} />
+                    <FacebookFilled className='socialIcon' onClick={handleLogin} />
+                    <TwitterOutlined className='socialIcon' onClick={handleLogin} />
+                    </div>
                 </Form>
             </Col>
         </Row>
