@@ -32,7 +32,7 @@ export const obterListaDeProcessos = async (username, password, cpf) => {
 
     try {
         const token = await getToken(username, password);
-        console.log(token);
+        console.log('oioioioioioi', token);
         let formData = new FormData();
         formData.append("cpf", cpf);
         const response = await fetch(`${apiBaseUrl}/process/list?cpf=${cpf}`, {

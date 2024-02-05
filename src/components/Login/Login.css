@@ -1,6 +1,7 @@
-.login--token {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Isso garante que o contêiner ocupe 100% da altura da viewport */
-  }
+.loginContainer {
+    min-width: 1000px;
+}
+
+.loginForm {
+    background-color: rgba(255, 255, 255,0.33);
+}

@@ -7,7 +7,6 @@ import 'antd/dist/reset.css';
 import {
   RouterProvider,
 } from 'react-router-dom';
-/* import './index.css'; */
 import { router } from './routes';
 
 

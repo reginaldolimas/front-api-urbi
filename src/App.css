@@ -1,6 +1,18 @@
-.login-container {
+#root {
+  background: red;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: auto;
+  background: url('./img/img29.jpg');
+  background-size: cover;
+}
+
+/* .login-container {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
-}
+} */

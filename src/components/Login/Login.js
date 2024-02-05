@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { getToken, obterListaDeProcessos } from '../../services/apiService';
-import { Button, Checkbox, Form, Input, Row, Col } from 'antd';
+import { obterListaDeProcessos } from '../../services/apiService';
+import { Button, Checkbox, Form, Input, Row, Col, Typography } from 'antd';
 import { useNavigate } from 'react-router-dom';
-
+import './Login.css';
 
 export function Login() {
     const [token, setToken] = useState('Token');
+    const [erroMensage, setErrorMensage] = useState('');
     const navigate = useNavigate();
 
     const onFinish = async (values) => {
@@ -23,14 +24,12 @@ export function Login() {
         //Função obterListaDeProcessos --- 2º Rota
         try {
             const response = await obterListaDeProcessos(values.username, values.password, '63389487387');
-            console.log('response', response);
             const objetoString = JSON.stringify(response);
-            console.log('objetoString', objetoString)
             setToken(objetoString);
             navigate('/home');
-
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Errorrrrrrrrr:', error);
+            setErrorMensage(error.message);
         }
 
     };
@@ -39,10 +38,11 @@ export function Login() {
     };
 
     return (
-
+        <div className='loginContainer'>
         <Row justify="center" align="middle" style={{ minHeight: '100vh' }}>
             <Col span={6}>
                 <Form
+                    className='loginForm'
                     name="basic"
                     labelCol={{
                         span: 8,
@@ -60,6 +60,7 @@ export function Login() {
                     onFinishFailed={onFinishFailed}
                     autoComplete="off"
                 >
+                <Typography.Title>Login</Typography.Title>
                     <Form.Item
                         label="Usuário"
                         name="username"
@@ -84,6 +85,8 @@ export function Login() {
                         ]}
                     >
                         <Input.Password />
+
+
                     </Form.Item>
 
                     <Form.Item
@@ -103,13 +106,21 @@ export function Login() {
                             span: 16,
                         }}
                     >
+                      
                         <Button type="primary" htmlType="submit">
                             Submit
                         </Button>
+                        {erroMensage && (
+                            <>
+                            <br/>
+                            <br/>
+                            <span style={{ color: 'red', minHeight: '150px', textAlign: 'justify' }}>{erroMensage}</span>
+                            </>
+                        )}
                     </Form.Item>
                 </Form>
             </Col>
         </Row>
-
+    </div>
     );
 } 

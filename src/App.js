@@ -1,17 +1,14 @@
 import './App.css';
-import LayoutDefault from './components/Layout/LayoutDefault';
-import { Login } from './components/Login/Login';
-import ProcessList from './components/ProcessList/ProcessList';
+/* import BreadCrumb from './components/BreadCrumb/BreadCrumb';
+import LayoutDefault from './components/Layout/LayoutDefault'; */
 
 function App() {
   return (
-    <div className="App">
+    <div className="appBg">
       <div className='login-container'>
-        {/* <Login /> */}
-        {/* <ProcessList /> */}
-        <LayoutDefault />
+      {/*   <BreadCrumb />
+        <LayoutDefault /> */}
       </div>
-
     </div>
   );
 }
