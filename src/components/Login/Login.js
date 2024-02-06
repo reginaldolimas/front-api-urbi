@@ -35,6 +35,7 @@ export function Login() {
 
     };
     const onFinishFailed = (errorInfo) => {
+        erroMensage && message.error(erroMensage);
         console.log('Failed:', errorInfo);
     };
 
